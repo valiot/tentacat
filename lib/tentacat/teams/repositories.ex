@@ -16,4 +16,19 @@ defmodule Tentacat.Teams.Repositories do
   def list(client \\ %Client{}, team_id) do
     get("teams/#{team_id}/repos", client)
   end
+
+  @doc """
+  Add a team to a repository
+
+  ## Example
+
+      Tentacat.Teams.Repositories.add 210840, org, repo
+      Tentacat.Teams.Repositories.add client, 210840, org, repo
+
+  More info at: https://developer.github.com/v3/teams/#add-or-update-team-repository
+  """
+  @spec add(Client.t(), integer, string, string) :: Tentacat.response()
+  def add(client \\ %Client{}, team_id, owner, repo) do
+    put("teams/#{team_id}/repos/#{owner}/#{repo}/", client)
+  end
 end
