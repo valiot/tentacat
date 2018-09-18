@@ -19,7 +19,7 @@ defmodule Tentacat.Teams.RepositoriesTest do
 
   test "add/4" do
     use_cassette "teams/repositories#add" do
-      assert elem(add(@client, 1_500_000, "elixir-conspiracy", "pacman"), 1) == []
+      assert elem(add(@client, 1_500_000, "valiot", "tentacat"), 1) == nil
     end
   end
 end

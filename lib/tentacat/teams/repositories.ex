@@ -23,12 +23,12 @@ defmodule Tentacat.Teams.Repositories do
   ## Example
 
       Tentacat.Teams.Repositories.add 210840, org, repo
-      Tentacat.Teams.Repositories.add client, 210840, org, repo
+      Tentacat.Teams.Repositories.add client, 210840, org, repo, %{permission: "push"}
 
   More info at: https://developer.github.com/v3/teams/#add-or-update-team-repository
   """
   @spec add(Client.t(), integer, binary, binary) :: Tentacat.response()
-  def add(client \\ %Client{}, team_id, owner, repo) do
-    put("teams/#{team_id}/repos/#{owner}/#{repo}/", client)
+  def add(client \\ %Client{}, team_id, owner, repo, body \\ %{}) do
+    put("teams/#{team_id}/repos/#{owner}/#{repo}", client, body)
   end
 end
